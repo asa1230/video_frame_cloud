@@ -1,0 +1,35 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://172.18.28.100:8761/eureka/
+#      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+    healthcheck:
+      enabled: true
+    register-with-eureka: true # 将自身的实例信息注册到Eureka服务端
+    fetch-registry: true # 拉取并缓存其他服务注册表副本到本地
+  instance:
+    # 向eureka注册时，使用ip+port作为服务实例的唯一标识
+    prefer-ip-address: true
+#  instance:
+#    hostname: localhost
+spring:
+  application:
+    name: frame-search
+  jackson:
+    time-zone: GMT+8
+server:
+  port: 8771
+  tomcat:
+    uri-encoding: UTF-8
+# 在eureka集群中，需注意关闭安全组件
+management:
+  security:
+    enabled: false
+
+# hbase properties
+hbase:
+  quorum: uhadoop-2ugw2q-master1,uhadoop-2ugw2q-master2,uhadoop-2ugw2q-core1
+  port: 2181
+  rootDir: hdfs://nn1:8020
+  nodeParent: /hbase
+  poolSize: 2

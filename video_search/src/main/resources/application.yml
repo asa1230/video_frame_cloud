@@ -1,0 +1,19 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://172.18.28.100:8761/eureka/
+#      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+#  instance:
+#    hostname: localhost
+server:
+  port: 8781
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    max-connections: 20
+spring:
+  application:
+    name: video-search
+management:
+  security:
+    enabled: false

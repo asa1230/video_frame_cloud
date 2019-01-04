@@ -1,0 +1,19 @@
+server:
+  port: 8761
+eureka:
+#  instance:
+#    hostname: localhost
+  client:
+    register-with-eureka: false # Eureka Server会向自己注册，防止自己注册自己
+    fetch-registry: false
+    service-url:
+      defaultZone:
+        http://172.18.28.100:8761/eureka/
+  server:
+    enable-self-preservation: false
+    wait-time-in-ms-when-sync-empty: 0
+spring:
+  application:
+    name: eureka-server
+  jackson:
+    time-zone: GMT+8
