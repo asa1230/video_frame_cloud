@@ -44,7 +44,10 @@ public class SearchController {
     @PostMapping("/hbase")
     public String query(String url) {
         log.info("request hbase path : " + url);
+        long a = System.currentTimeMillis();
         String res = searchService.searchByHbase(url);
+        long b = System.currentTimeMillis();
+        log.info("search by hbase cost : " + (b - a) + " ms");
         return res;
     }
 

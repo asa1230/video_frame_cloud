@@ -43,12 +43,12 @@ public class LoadBalanceController {
         return body;
     }
 
-    @PostMapping("/verify")
+    @PostMapping("/query")
     public String verify(String url) {
         LinkedMultiValueMap<String,String> paramMap = new LinkedMultiValueMap<>();
         paramMap.add("url",url);
         HttpEntity<LinkedMultiValueMap<String,String>> httpEntity = new HttpEntity<>(paramMap,null);
-        String body = restTemplate.postForEntity("http://video-retrieval/search/verify", httpEntity, String.class).getBody();
+        String body = restTemplate.postForEntity("http://frame-search/search/hbase", httpEntity, String.class).getBody();
         log.info(url + " --- flag : " + body);
         return body;
     }
